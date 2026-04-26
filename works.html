@@ -486,6 +486,12 @@
                 grid-column: span 12 !important; 
                 height: 300px !important; 
             }
+            
+            /* Hide secondary header text on mobile to prevent overlap with center logo */
+            .back-text,
+            .header-count {
+                display: none;
+            }
         }
 
         /* Small phone — 6.3 inch / ~390px */
@@ -539,7 +545,7 @@
     <header class="works-header" id="worksHeader">
         <a href="index.html" class="back-btn">
             <div class="back-icon"><span class="back-arrow"></span></div>
-            <span>Back</span>
+            <span class="back-text">Back</span>
         </a>
         <div class="header-logo">Aura Architects</div>
         <div class="header-count">08 Projects</div>
