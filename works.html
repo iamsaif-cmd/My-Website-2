@@ -123,7 +123,20 @@
             border-radius: 50%;
             border: 1px solid rgba(255,255,255,0.15);
             display: flex; align-items: center; justify-content: center;
-            font-size: 13px;
+            transition: 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Pure CSS arrow — no Font Awesome dependency, works on all devices */
+        .back-arrow {
+            display: block;
+            width: 9px;
+            height: 9px;
+            border-top: 2px solid currentColor;
+            border-left: 2px solid currentColor;
+            transform: rotate(-45deg);
+            margin-left: 3px;
             transition: 0.3s;
         }
 
@@ -138,6 +151,11 @@
             font-weight: 800;
             letter-spacing: 4px;
             text-transform: uppercase;
+            /* Truly centered regardless of left/right content width */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
         }
 
         .header-count {
@@ -145,6 +163,8 @@
             font-weight: 600;
             opacity: 0.35;
             letter-spacing: 1px;
+            position: relative; /* ensure it stays above the absolute logo */
+            z-index: 1;
         }
 
         /* ── Hero ── */
@@ -472,7 +492,7 @@
     <!-- Header -->
     <header class="works-header" id="worksHeader">
         <a href="index.html" class="back-btn">
-            <div class="back-icon"><i class="fa-solid fa-arrow-left"></i></div>
+            <div class="back-icon"><span class="back-arrow"></span></div>
             <span>Back</span>
         </a>
         <div class="header-logo">Aura Architects</div>
