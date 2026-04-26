@@ -1538,6 +1538,8 @@ img {
         gap: 20px;
     }
 
+    .hero-desc { font-size: 16px; }
+
     .hero-stats-mini {
         gap: 20px;
     }
@@ -1633,13 +1635,26 @@ img {
         font-size: 42px;
     }
 
+    .studio-p { font-size: 18px; }
+
+    /* Service items — reduce heavy desktop padding */
+    .service-item { padding: 30px 28px; }
+    .service-item .s-title { font-size: 26px; }
+
+    /* Work header wraps on small tablets */
+    .work-header {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
     .loader-inner {
         width: 90%;
         max-width: 400px;
     }
 }
 
-/* Small Mobile */
+
+/* Small Mobile — 480px */
 @media (max-width: 480px) {
 
     .hero-title {
@@ -1703,6 +1718,133 @@ img {
     .mobile-nav-link {
         font-size: clamp(30px, 10vw, 55px);
     }
+}
+
+/* ══════════════════════
+   SMALL PHONE — 6.3 inch / ~390px
+   Full adaptive layout for compact screens
+══════════════════════ */
+@media (max-width: 390px) {
+
+    /* Base spacing */
+    .container { padding: 40px 4%; }
+
+    /* Hero */
+    .hero-section { padding: 100px 4% 60px; }
+
+    .hero-title {
+        font-size: clamp(30px, 14vw, 50px);
+        letter-spacing: -1px;
+    }
+
+    .hero-badge {
+        font-size: 9px;
+        padding: 7px 12px;
+        letter-spacing: 1px;
+        margin-bottom: 28px;
+    }
+
+    .hero-meta {
+        padding: 14px 16px;
+        gap: 14px;
+        margin-top: 28px;
+    }
+
+    .hero-desc {
+        font-size: 13px;
+    }
+
+    .hero-stats-mini { gap: 10px; }
+    .mini-num { font-size: 15px; }
+    .mini-divider { height: 22px; }
+
+    .hero-image-wrap {
+        height: 62vw;
+        min-height: 200px;
+    }
+
+    .hero-img-badge {
+        bottom: 12px;
+        left: 12px;
+        padding: 8px 12px;
+        font-size: 10px;
+        gap: 8px;
+    }
+
+    .hero-img-badge i {
+        min-width: 22px;
+        min-height: 22px;
+        font-size: 8px;
+    }
+
+    /* Section titles */
+    .section-title { font-size: clamp(26px, 8vw, 44px); }
+    .section-tag { margin-bottom: 18px; }
+
+    /* Studio */
+    .studio-p { font-size: 14px; }
+    .stat-num { font-size: 34px; }
+    .stat-item { padding: 12px 16px; }
+    .studio-image { height: 280px; }
+
+    /* Work header — stack on tiny screens */
+    .work-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    /* Bento */
+    .bento-item.vertical,
+    .bento-item.wide,
+    .bento-item.square,
+    .bento-item.small,
+    .bento-item.full {
+        height: 240px !important;
+    }
+
+    /* Services */
+    .service-item { padding: 22px 18px; }
+    .service-item .s-title { font-size: 20px; }
+    .service-item .s-desc { font-size: 13px; }
+    .s-arrow { font-size: 14px; }
+
+    /* Process */
+    .process-grid { grid-template-columns: 1fr; }
+    .process-card { padding: 24px 20px; }
+    .process-title { font-size: 18px; }
+    .process-desc { font-size: 13px; }
+
+    /* Testimonials */
+    .testimonial-lead-card {
+        padding: 28px 18px;
+        border-radius: 24px;
+    }
+    .test-quote { font-size: clamp(16px, 5vw, 28px); letter-spacing: -0.5px; }
+    .test-card { padding: 24px 18px; }
+    .test-card p { font-size: 14px; }
+
+    /* CTA */
+    .cta-box {
+        padding: 48px 4%;
+        border-radius: 24px;
+    }
+    .cta-text { font-size: clamp(24px, 10vw, 40px); }
+    .cta-large-btn { font-size: clamp(18px, 7.5vw, 28px); }
+
+    /* Footer */
+    .footer-logo { font-size: 28px; }
+    .footer-col h4 { margin-bottom: 18px; }
+    .footer-bottom { padding: 24px 0; }
+
+    /* Mobile menu */
+    .mobile-menu-inner { padding: 50px 20px; }
+    .mobile-nav-link { font-size: clamp(26px, 10vw, 44px); }
+    .mobile-cta-btn { padding: 14px 24px; font-size: 12px; letter-spacing: 2px; }
+
+    /* Loader */
+    .loader-inner { width: 88%; }
+    .loader-logo { font-size: 60px; }
 }
 
 /* ══════════════════════════════════════
@@ -1839,57 +1981,57 @@ a, button,
 }
 
 /* ══════════════════════════════════════
-   MOBILE PERFORMANCE — Remove expensive
-   backdrop-filter on low-end devices.
-   Visual stays dark-glass; GPU saved.
+   MOBILE PERFORMANCE — Use lighter blur
+   (10px vs desktop 30px = 3x cheaper GPU)
+   Full glass aesthetic maintained.
 ══════════════════════════════════════ */
 @media (max-width: 768px) {
     /* Bento grid items */
     .bento-item {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
         background: rgba(10, 10, 10, 0.75) !important;
     }
 
     /* Project card meta labels */
     .item-meta {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
         background: rgba(10, 10, 10, 0.85) !important;
     }
 
     /* Service cards */
     .service-item {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: rgba(12, 12, 12, 0.92) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        background: rgba(12, 12, 12, 0.88) !important;
     }
 
     /* Testimonial cards */
     .test-card {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: rgba(12, 12, 12, 0.92) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        background: rgba(12, 12, 12, 0.88) !important;
     }
 
     /* CTA box */
     .cta-box {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: rgba(12, 12, 12, 0.95) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        background: rgba(12, 12, 12, 0.92) !important;
     }
 
     /* Wet-glass badges */
     .wet-glass {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: rgba(20, 20, 20, 0.9) !important;
+        backdrop-filter: blur(12px) saturate(140%) !important;
+        -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+        background: rgba(15, 15, 15, 0.75) !important;
     }
 
     /* Scrolled header */
     .main-header.scrolled {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: rgba(8, 8, 8, 0.97) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        background: rgba(8, 8, 8, 0.92) !important;
     }
 }

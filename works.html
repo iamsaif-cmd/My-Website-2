@@ -468,7 +468,7 @@
         }
 
         @media (max-width: 768px) {
-            .works-hero { padding: 140px 5% 60px; }
+            .works-hero { padding: 130px 5% 50px; }
             .works-grid { padding: 0 5% 40px; gap: 14px; }
             .filter-bar { padding: 0 5% 40px; }
             .works-cta { margin: 0 5% 80px; padding: 40px 30px; }
@@ -476,6 +476,9 @@
             .hero-sub-row { flex-direction: column; align-items: flex-start; gap: 30px; }
             .works-hero-title { letter-spacing: -3px; }
             .wc-md, .wc-third { grid-column: span 12; height: 340px; }
+            .hero-sub-text { font-size: 15px; }
+            .filter-btn { padding: 10px 18px; font-size: 12px; }
+            .works-cta h2 { letter-spacing: -1px; }
         }
 
         @media (max-width: 480px) {
@@ -483,6 +486,49 @@
                 grid-column: span 12 !important; 
                 height: 300px !important; 
             }
+        }
+
+        /* Small phone — 6.3 inch / ~390px */
+        @media (max-width: 390px) {
+            .works-header { padding: 20px 4%; }
+            .back-btn { font-size: 11px; gap: 8px; }
+            .back-btn .back-icon { width: 30px; height: 30px; }
+            .header-logo { font-size: 12px; letter-spacing: 2px; }
+            .header-count { font-size: 11px; }
+
+            .works-hero { padding: 110px 4% 40px; }
+            .works-hero-title {
+                font-size: clamp(52px, 16vw, 90px);
+                letter-spacing: -2px;
+            }
+            .hero-eyebrow { font-size: 10px; gap: 10px; }
+            .hero-sub-text { font-size: 14px; }
+            .project-count-badge { padding: 14px 20px; }
+            .count-num { font-size: 32px; }
+            .count-label { font-size: 10px; }
+
+            .filter-bar { padding: 0 4% 30px; gap: 8px; }
+            .filter-btn { padding: 9px 14px; font-size: 11px; letter-spacing: 1px; }
+
+            .works-grid { padding: 0 4% 30px; gap: 10px; }
+            .wc-lg, .wc-sm, .wc-wide, .wc-full, .wc-md, .wc-third {
+                grid-column: span 12 !important;
+                height: 250px !important;
+                border-radius: 18px;
+            }
+            .wc-name { font-size: 20px; }
+            .wc-meta { padding: 20px 22px; }
+
+            .works-cta { 
+                margin: 0 4% 60px; 
+                padding: 30px 22px; 
+                border-radius: 22px;
+                gap: 24px;
+            }
+            .works-cta h2 { font-size: clamp(26px, 8vw, 40px); letter-spacing: -1px; }
+            .works-cta-btn { padding: 14px 28px; font-size: 12px; }
+
+            .works-footer-line { padding: 24px 4%; font-size: 11px; }
         }
     </style>
 </head>
