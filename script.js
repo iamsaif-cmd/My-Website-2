@@ -220,59 +220,88 @@ const canvas = document.getElementById("evolution-canvas");
 
 if (canvas) {
     const context = canvas.getContext("2d");
-    canvas.width = 1920;
-    canvas.height = 1080;
+    // Lower resolution on mobile saves GPU memory & fill-rate
+    const isMobileCanvas = window.innerWidth < 768;
+    canvas.width  = isMobileCanvas ? 960  : 1920;
+    canvas.height = isMobileCanvas ? 540  : 1080;
 
-    const frameCount = 122;
-    const currentFrame = index => (
-        `assets/images/evolution/frame-${(index + 1).toString().padStart(3, '0')}.jpg`
-    );
+    const frameCount  = 122;
+    const currentFrame = index =>
+        `assets/images/evolution/frame-${(index + 1).toString().padStart(3, '0')}.jpg`;
 
-    const images = [];
+    // Pre-fill with nulls — frames are loaded on-demand
+    const images    = new Array(frameCount).fill(null);
     const evolution = { frame: 0 };
 
-    let loadedCount = 0;
-    for (let i = 0; i < frameCount; i++) {
-        const img = new Image();
-        img.onload = () => {
-            loadedCount++;
-            if (i === 0) render();
-        };
-        img.src = currentFrame(i);
-        images.push(img);
+    // ── Load ONLY the first frame now so something renders immediately ──
+    const firstImg   = new Image();
+    firstImg.onload  = () => render();
+    firstImg.src     = currentFrame(0);
+    images[0]        = firstImg;
+
+    // ── Lazy batch loader — runs AFTER page load, low priority ──
+    function loadFramesBatch(from, batchSize) {
+        if (from >= frameCount) return;
+        const to = Math.min(from + batchSize, frameCount);
+        for (let i = from; i < to; i++) {
+            if (!images[i]) {
+                const img = new Image();
+                img.src   = currentFrame(i);
+                images[i] = img;
+            }
+        }
+        if (to < frameCount) {
+            setTimeout(() => loadFramesBatch(to, batchSize), 200);
+        }
     }
+
+    // Start loading the rest 2 s after page load so critical
+    // resources (hero img, fonts, GSAP) always get full bandwidth
+    window.addEventListener('load', () => {
+        setTimeout(() => loadFramesBatch(1, 6), 2000);
+    });
 
     gsap.to(evolution, {
         frame: frameCount - 1,
-        snap: "frame",
-        ease: "none",
+        snap:  "frame",
+        ease:  "none",
         scrollTrigger: {
             trigger: "#main-content",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.5
+            start:   "top top",
+            end:     "bottom bottom",
+            scrub:   0.5
         },
         onUpdate: render
     });
 
     function render() {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        const img = images[evolution.frame];
-        if (img && img.complete && img.naturalWidth > 0) {
-            const canvasAspect = canvas.width / canvas.height;
-            const imgAspect = img.width / img.height;
+
+        // Find the nearest already-loaded frame (search backwards)
+        let img = null;
+        for (let i = evolution.frame; i >= 0; i--) {
+            const candidate = images[i];
+            if (candidate && candidate.complete && candidate.naturalWidth > 0) {
+                img = candidate;
+                break;
+            }
+        }
+
+        if (img) {
+            const canvasAspect = canvas.width  / canvas.height;
+            const imgAspect    = img.naturalWidth / img.naturalHeight;
             let drawWidth, drawHeight, offsetX, offsetY;
 
             if (imgAspect > canvasAspect) {
                 drawHeight = canvas.height;
-                drawWidth = canvas.height * imgAspect;
-                offsetX = -(drawWidth - canvas.width) / 2;
-                offsetY = 0;
+                drawWidth  = canvas.height * imgAspect;
+                offsetX    = -(drawWidth  - canvas.width)  / 2;
+                offsetY    = 0;
             } else {
-                drawWidth = canvas.width;
-                drawHeight = canvas.width / imgAspect;
-                offsetX = 0;
-                offsetY = -(drawHeight - canvas.height) / 2;
+                drawWidth  = canvas.width;
+                drawHeight = canvas.width  / imgAspect;
+                offsetX    = 0;
+                offsetY    = -(drawHeight - canvas.height) / 2;
             }
             context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
         }

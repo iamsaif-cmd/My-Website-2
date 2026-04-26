@@ -426,6 +426,7 @@ img {
     width: 100%;
     height: 120%;
     object-fit: cover;
+    will-change: transform; /* Promotes to own GPU layer — prevents repaint on scroll */
 }
 
 .hero-desc {
@@ -1835,4 +1836,60 @@ a, button,
 ::selection {
     background: rgba(255,255,255,0.15);
     color: #fff;
+}
+
+/* ══════════════════════════════════════
+   MOBILE PERFORMANCE — Remove expensive
+   backdrop-filter on low-end devices.
+   Visual stays dark-glass; GPU saved.
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+    /* Bento grid items */
+    .bento-item {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(10, 10, 10, 0.75) !important;
+    }
+
+    /* Project card meta labels */
+    .item-meta {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(10, 10, 10, 0.85) !important;
+    }
+
+    /* Service cards */
+    .service-item {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(12, 12, 12, 0.92) !important;
+    }
+
+    /* Testimonial cards */
+    .test-card {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(12, 12, 12, 0.92) !important;
+    }
+
+    /* CTA box */
+    .cta-box {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(12, 12, 12, 0.95) !important;
+    }
+
+    /* Wet-glass badges */
+    .wet-glass {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(20, 20, 20, 0.9) !important;
+    }
+
+    /* Scrolled header */
+    .main-header.scrolled {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(8, 8, 8, 0.97) !important;
+    }
 }

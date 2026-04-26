@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AURA ARCHITECTS | The New Era of Design</title>
     <meta name="description" content="Aura Architects — Creating sustainable and innovative structural solutions for a modern world. Based in the new era of design.">
+    <!-- DNS prefetch for all external origins -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://i.pravatar.cc">
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Preload critical hero image so it fetches alongside CSS -->
+    <link rel="preload" href="assets/images/hero.png" as="image">
     <link rel="stylesheet" href="style.css?v=2.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Library scripts removed from here — moved to end of body to stop blocking HTML parse -->
 </head>
 
 <body>
@@ -113,7 +118,7 @@
 
                 <div class="hero-middle">
                     <div class="hero-image-wrap">
-                        <img src="assets/images/hero.png" alt="Aura Architects Main Hero" class="parallax-img">
+                        <img src="assets/images/hero.png" alt="Aura Architects Main Hero" class="parallax-img" fetchpriority="high" decoding="async">
                         <div class="hero-img-badge wet-glass">
                             <i class="fa-solid fa-play"></i>
                             <span>View Showreel</span>
@@ -183,7 +188,7 @@
                 </div>
                 <div class="studio-image-wrap reveal-item">
                     <div class="studio-image">
-                        <img src="assets/images/vision.png" alt="Aura Studio Vision" class="parallax-img">
+                        <img src="assets/images/vision.png" alt="Aura Studio Vision" class="parallax-img" loading="lazy" decoding="async">
                         <div class="studio-img-overlay wet-glass">
                             <span class="overlay-tag">Award 2024</span>
                             <p>Best Architectural Firm</p>
@@ -206,7 +211,7 @@
             <div class="bento-grid">
                 <div class="bento-item vertical reveal-item">
                     <div class="item-img-wrap">
-                        <img src="assets/images/project1.png" alt="Horizon Villa" class="parallax-img">
+                        <img src="assets/images/project1.png" alt="Horizon Villa" class="parallax-img" loading="lazy" decoding="async">
                     </div>
                     <div class="item-meta wet-glass">
                         <h3>Horizon Villa</h3>
@@ -215,7 +220,7 @@
                 </div>
                 <div class="bento-item wide reveal-item">
                     <div class="item-img-wrap">
-                        <img src="assets/images/project4.png" alt="The Monolith Center" class="parallax-img">
+                        <img src="assets/images/project4.png" alt="The Monolith Center" class="parallax-img" loading="lazy" decoding="async">
                     </div>
                     <div class="item-meta wet-glass">
                         <h3>The Monolith Center</h3>
@@ -224,7 +229,7 @@
                 </div>
                 <div class="bento-item square reveal-item">
                     <div class="item-img-wrap">
-                        <img src="assets/images/project2.png" alt="Glass Essence" class="parallax-img">
+                        <img src="assets/images/project2.png" alt="Glass Essence" class="parallax-img" loading="lazy" decoding="async">
                     </div>
                     <div class="item-meta wet-glass">
                         <h3>Glass Essence</h3>
@@ -233,7 +238,7 @@
                 </div>
                 <div class="bento-item small reveal-item">
                     <div class="item-img-wrap">
-                        <img src="assets/images/project3.png" alt="Urban Sanctuary" class="parallax-img">
+                        <img src="assets/images/project3.png" alt="Urban Sanctuary" class="parallax-img" loading="lazy" decoding="async">
                     </div>
                     <div class="item-meta wet-glass">
                         <h3>Urban Sanctuary</h3>
@@ -242,7 +247,7 @@
                 </div>
                 <div class="bento-item full reveal-item">
                     <div class="item-img-wrap">
-                        <img src="assets/images/project5.png" alt="The Museum Arc" class="parallax-img">
+                        <img src="assets/images/project5.png" alt="The Museum Arc" class="parallax-img" loading="lazy" decoding="async">
                     </div>
                     <div class="item-meta wet-glass">
                         <h3>The Museum Arc</h3>
@@ -251,7 +256,7 @@
                 </div>
                 <div class="bento-item square reveal-item">
                     <div class="item-img-wrap">
-                        <img src="assets/images/service1.png" alt="Sakura Pavilion" class="parallax-img">
+                        <img src="assets/images/service1.png" alt="Sakura Pavilion" class="parallax-img" loading="lazy" decoding="async">
                     </div>
                     <div class="item-meta wet-glass">
                         <h3>Sakura Pavilion</h3>
@@ -260,7 +265,7 @@
                 </div>
                 <div class="bento-item square reveal-item">
                     <div class="item-img-wrap">
-                        <img src="assets/images/vision.png" alt="Azure Tower" class="parallax-img">
+                        <img src="assets/images/vision.png" alt="Azure Tower" class="parallax-img" loading="lazy" decoding="async">
                     </div>
                     <div class="item-meta wet-glass">
                         <h3>Azure Tower</h3>
@@ -269,7 +274,7 @@
                 </div>
                 <div class="bento-item full reveal-item">
                     <div class="item-img-wrap">
-                        <img src="assets/images/service2.png" alt="The Zen House" class="parallax-img">
+                        <img src="assets/images/service2.png" alt="The Zen House" class="parallax-img" loading="lazy" decoding="async">
                     </div>
                     <div class="item-meta wet-glass">
                         <h3>The Zen House</h3>
@@ -289,7 +294,7 @@
             </div>
             <div class="services-grid">
                 <div class="service-image-sticky">
-                    <img src="assets/images/service1.png" alt="Services" class="active-service-img">
+                    <img src="assets/images/service1.png" alt="Services" class="active-service-img" loading="lazy" decoding="async">
                     <div class="service-img-tag wet-glass">
                         <span>Premium Quality</span>
                     </div>
@@ -384,7 +389,7 @@
                 <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
                 <h2 class="test-quote">"Aura Architects doesn't just build structures; they build legacies. Their attention to detail and vision is simply unmatched."</h2>
                 <div class="test-author flex">
-                    <img src="https://i.pravatar.cc/100?u=aura-founder" alt="Alexander Wright" class="founder-img">
+                    <img src="https://i.pravatar.cc/100?u=aura-founder" alt="Alexander Wright" class="founder-img" loading="lazy" decoding="async">
                     <div class="author-details">
                         <span class="author-name">Alexander Wright</span>
                         <span class="author-title">Principal Architect & Founder</span>
@@ -396,7 +401,7 @@
                     <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                     <p>"The level of detail and artistic flair they bring to every corner of a project is what sets them apart."</p>
                     <div class="author-mini flex">
-                        <img src="https://i.pravatar.cc/60?u=1" alt="Julian Marc">
+                        <img src="https://i.pravatar.cc/60?u=1" alt="Julian Marc" loading="lazy" decoding="async">
                         <div>
                             <h4>Julian Marc</h4>
                             <p>CEO, Luxe Estates</p>
@@ -407,7 +412,7 @@
                     <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                     <p>"Working with Aura was a masterclass in collaboration. They listen, they innovate, and they deliver perfection."</p>
                     <div class="author-mini flex">
-                        <img src="https://i.pravatar.cc/60?u=2" alt="Sophia Chen">
+                        <img src="https://i.pravatar.cc/60?u=2" alt="Sophia Chen" loading="lazy" decoding="async">
                         <div>
                             <h4>Sophia Chen</h4>
                             <p>Design Director</p>
@@ -418,7 +423,7 @@
                     <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                     <p>"A true partnership. They understand the balance between commercial viability and architectural integrity."</p>
                     <div class="author-mini flex">
-                        <img src="https://i.pravatar.cc/60?u=3" alt="Marcus Vane">
+                        <img src="https://i.pravatar.cc/60?u=3" alt="Marcus Vane" loading="lazy" decoding="async">
                         <div>
                             <h4>Marcus Vane</h4>
                             <p>Developer</p>
@@ -481,6 +486,10 @@
         </div>
     </footer>
 
+    <!-- Library scripts at end of body: browser renders full HTML first, then loads JS -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="script.js?v=2.0"></script>
 </body>
 
