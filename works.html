@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works | AURA ARCHITECTS</title>
+    <meta name="description" content="Explore the full portfolio of Aura Architects — residential, commercial, cultural, and landscape projects from 2020–2024.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        /* ── Reset & Vars ── */
+        :root {
+            --bg: #0A0A0A;
+            --text: #F5F5F5;
+            --muted: #888888;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Hide scrollbar ── */
+        ::-webkit-scrollbar { display: none; }
+        * { scrollbar-width: none; -ms-overflow-style: none; }
+
+        /* ── No blue tap highlight ── */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
+        /* ── Disable text selection ── */
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+        }
+
+        /* ── Disable image drag only ── */
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            /* NO pointer-events:none — causes cursor bleed-through */
+        }
+
+        /* ── Interactive elements get pointer cursor ── */
+        a, button, .filter-btn, .works-cta-btn, .back-btn {
+            cursor: pointer;
+        }
+
+        html, body {
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* ── Text selection color ── */
+        ::selection { background: rgba(255,255,255,0.1); color: #fff; }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; object-fit: cover; }
+
+        /* ── Noise Texture ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ── Header ── */
+        .works-header {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 36px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.8s var(--ease);
+        }
+
+        .works-header.scrolled {
+            background: rgba(10,10,10,0.85);
+            backdrop-filter: blur(30px);
+            padding: 20px 8%;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover { opacity: 1; }
+
+        .back-btn .back-icon {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover .back-icon {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        .header-logo {
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .header-count {
+            font-size: 13px;
+            font-weight: 600;
+            opacity: 0.35;
+            letter-spacing: 1px;
+        }
+
+        /* ── Hero ── */
+        .works-hero {
+            padding: 180px 8% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-eyebrow {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--muted);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 40px; height: 1px;
+            background: var(--muted);
+        }
+
+        .works-hero-title {
+            font-size: clamp(70px, 11vw, 180px);
+            font-weight: 800;
+            line-height: 0.9;
+            letter-spacing: -6px;
+            overflow: hidden;
+        }
+
+        .works-hero-title .line {
+            overflow: hidden;
+            padding: 0.08em 0;
+        }
+
+        .works-hero-title .line span {
+            display: block;
+        }
+
+        .hero-sub-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .hero-sub-text {
+            font-size: 18px;
+            color: var(--muted);
+            max-width: 420px;
+            line-height: 1.6;
+        }
+
+        .project-count-badge {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            backdrop-filter: blur(20px);
+            padding: 20px 32px;
+            border-radius: 100px;
+        }
+
+        .count-num {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .count-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--muted);
+            max-width: 80px;
+            line-height: 1.4;
+        }
+
+        /* ── Filter Tabs ── */
+        .filter-bar {
+            padding: 0 8% 60px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 26px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: transparent;
+            color: rgba(255,255,255,0.35);
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover {
+            color: #fff;
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .filter-btn.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        /* ── Works Grid ── */
+        .works-grid {
+            padding: 0 8% 60px;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+        }
+
+        /* Card Sizes */
+        .wc { position: relative; overflow: hidden; border-radius: 24px; cursor: pointer; }
+        .wc-lg { grid-column: span 7; height: 580px; }
+        .wc-sm { grid-column: span 5; height: 580px; }
+        .wc-md { grid-column: span 4; height: 440px; }
+        .wc-wide { grid-column: span 8; height: 440px; }
+        .wc-full { grid-column: span 12; height: 500px; }
+        .wc-third { grid-column: span 4; height: 440px; }
+
+        .wc img {
+            width: 100%;
+            height: 110%;
+            object-fit: cover;
+            transition: transform 1.2s var(--ease);
+        }
+
+        .wc:hover img { transform: scale(1.06); }
+
+        /* Dark overlay on hover */
+        .wc::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .wc:hover::after { opacity: 1; }
+
+        /* Card meta */
+        .wc-meta {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 30px 35px;
+            z-index: 5;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.5s var(--ease);
+        }
+
+        .wc:hover .wc-meta {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wc-cat {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .wc-name {
+            font-size: 26px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .wc-year {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 4px;
+        }
+
+        /* Arrow badge */
+        .wc-arrow {
+            position: absolute;
+            top: 24px; right: 24px;
+            width: 44px; height: 44px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px;
+            color: #fff;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.4s var(--ease);
+            z-index: 6;
+        }
+
+        .wc:hover .wc-arrow {
+            opacity: 1;
+            transform: scale(1);
+            background: rgba(255,255,255,0.9);
+            color: #000;
+        }
+
+        /* Bottom gradient always visible */
+        .wc-always-gradient {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Hidden class for filter */
+        .wc.hidden {
+            display: none;
+        }
+
+        /* ── CTA Strip ── */
+        .works-cta {
+            margin: 20px 8% 100px;
+            padding: 80px;
+            background: rgba(15,15,15,0.6);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .works-cta h2 {
+            font-size: clamp(32px, 4vw, 56px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .works-cta-btn {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 44px;
+            background: #fff;
+            color: #000;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .works-cta-btn:hover {
+            background: rgba(255,255,255,0.85);
+            transform: translateY(-2px);
+        }
+
+        /* ── Footer line ── */
+        .works-footer-line {
+            text-align: center;
+            padding: 30px 8%;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 13px;
+            color: rgba(255,255,255,0.2);
+            font-weight: 600;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .wc-lg { grid-column: span 12; height: 480px; }
+            .wc-sm { grid-column: span 12; height: 420px; }
+            .wc-wide { grid-column: span 12; height: 420px; }
+            .wc-md { grid-column: span 6; height: 380px; }
+            .wc-third { grid-column: span 6; height: 380px; }
+            .wc-full { height: 400px; }
+            .works-cta { flex-direction: column; align-items: flex-start; padding: 50px; }
+        }
+
+        @media (max-width: 768px) {
+            .works-hero { padding: 140px 5% 60px; }
+            .works-grid { padding: 0 5% 40px; gap: 14px; }
+            .filter-bar { padding: 0 5% 40px; }
+            .works-cta { margin: 0 5% 80px; padding: 40px 30px; }
+            .works-header { padding: 24px 5%; }
+            .hero-sub-row { flex-direction: column; align-items: flex-start; gap: 30px; }
+            .works-hero-title { letter-spacing: -3px; }
+            .wc-md, .wc-third { grid-column: span 12; height: 340px; }
+        }
+
+        @media (max-width: 480px) {
+            .wc-lg, .wc-sm, .wc-wide, .wc-full, .wc-md, .wc-third { 
+                grid-column: span 12 !important; 
+                height: 300px !important; 
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="works-header" id="worksHeader">
+        <a href="index.html" class="back-btn">
+            <div class="back-icon"><i class="fa-solid fa-arrow-left"></i></div>
+            <span>Back</span>
+        </a>
+        <div class="header-logo">Aura Architects</div>
+        <div class="header-count">08 Projects</div>
+    </header>
+
+    <!-- Hero -->
+    <section class="works-hero">
+        <div class="hero-eyebrow">Selected Works</div>
+        <h1 class="works-hero-title">
+            <div class="line"><span>Our</span></div>
+            <div class="line"><span>Projects</span></div>
+        </h1>
+        <div class="hero-sub-row">
+            <p class="hero-sub-text">A curated archive of our most defining architectural achievements — from intimate residences to iconic cultural landmarks.</p>
+            <div class="project-count-badge">
+                <span class="count-num">08</span>
+                <span class="count-label">Total Projects</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="residential">Residential</button>
+        <button class="filter-btn" data-filter="commercial">Commercial</button>
+        <button class="filter-btn" data-filter="cultural">Cultural</button>
+        <button class="filter-btn" data-filter="interior">Interior</button>
+        <button class="filter-btn" data-filter="landscape">Landscape</button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="works-grid" id="worksGrid">
+
+        <!-- Row 1 -->
+        <div class="wc wc-lg reveal-wc" data-cat="residential">
+            <img src="assets/images/project1.png" alt="Horizon Villa">
+            <div class="wc-always-gradient"></div>
+            <div class="wc-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+            <div class="wc-meta">
+                <span class="wc-cat">Residential</span>
+                <div class="wc-name">Horizon Villa</div>
+                <div class="wc-year">2024</div>
+            </div>
+        </div>
+
+        <div class="wc wc-sm reveal-wc" data-cat="cultural">
+            <img src="assets/images/project4.png" alt="The Monolith Center">
+            <div class="wc-always-gradient"></div>
+            <div class="wc-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+            <div class="wc-meta">
+                <span class="wc-cat">Cultural</span>
+                <div class="wc-name">The Monolith Center</div>
+                <div class="wc-year">2023</div>
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="wc wc-md reveal-wc" data-cat="interior">
+            <img src="assets/images/project3.png" alt="Urban Sanctuary">
+            <div class="wc-always-gradient"></div>
+            <div class="wc-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+            <div class="wc-meta">
+                <span class="wc-cat">Interior</span>
+                <div class="wc-name">Urban Sanctuary</div>
+                <div class="wc-year">2023</div>
+            </div>
+        </div>
+
+        <div class="wc wc-wide reveal-wc" data-cat="commercial">
+            <img src="assets/images/project2.png" alt="Glass Essence">
+            <div class="wc-always-gradient"></div>
+            <div class="wc-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+            <div class="wc-meta">
+                <span class="wc-cat">Commercial</span>
+                <div class="wc-name">Glass Essence</div>
+                <div class="wc-year">2024</div>
+            </div>
+        </div>
+
+        <!-- Row 3 — Full width -->
+        <div class="wc wc-full reveal-wc" data-cat="cultural">
+            <img src="assets/images/project5.png" alt="The Museum Arc">
+            <div class="wc-always-gradient"></div>
+            <div class="wc-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+            <div class="wc-meta">
+                <span class="wc-cat">Cultural</span>
+                <div class="wc-name">The Museum Arc</div>
+                <div class="wc-year">2024</div>
+            </div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="wc wc-third reveal-wc" data-cat="landscape">
+            <img src="assets/images/service1.png" alt="Sakura Pavilion">
+            <div class="wc-always-gradient"></div>
+            <div class="wc-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+            <div class="wc-meta">
+                <span class="wc-cat">Landscape</span>
+                <div class="wc-name">Sakura Pavilion</div>
+                <div class="wc-year">2023</div>
+            </div>
+        </div>
+
+        <div class="wc wc-third reveal-wc" data-cat="commercial">
+            <img src="assets/images/vision.png" alt="Azure Tower">
+            <div class="wc-always-gradient"></div>
+            <div class="wc-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+            <div class="wc-meta">
+                <span class="wc-cat">Commercial</span>
+                <div class="wc-name">Azure Tower</div>
+                <div class="wc-year">2022</div>
+            </div>
+        </div>
+
+        <div class="wc wc-third reveal-wc" data-cat="residential">
+            <img src="assets/images/service2.png" alt="The Zen House">
+            <div class="wc-always-gradient"></div>
+            <div class="wc-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+            <div class="wc-meta">
+                <span class="wc-cat">Residential</span>
+                <div class="wc-name">The Zen House</div>
+                <div class="wc-year">2024</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="works-cta reveal-wc">
+        <h2>Have a project<br>in mind?</h2>
+        <a href="index.html#contact" class="works-cta-btn">
+            Start a Project <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Footer line -->
+    <div class="works-footer-line">
+        © 2026 Aura Architects — Built by <strong style="color:rgba(255,255,255,0.5)">SaifLabs</strong>
+    </div>
+
+    <script>
+        // ── GSAP + Lenis Setup ──
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Adaptive refresh rate — matches 60/90/120/144Hz displays
+        gsap.ticker.fps(-1);
+
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+            wheelMultiplier: 0.8,
+            touchMultiplier: 1.5,
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+
+        // ── Disable right-click, text select, drag ──
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        document.addEventListener('selectstart', (e) => e.preventDefault());
+        document.addEventListener('dragstart',   (e) => e.preventDefault());
+
+        // ── Header scroll ──
+        const worksHeader = document.getElementById('worksHeader');
+        ScrollTrigger.create({
+            start: 'top -60',
+            onUpdate: (self) => {
+                if (self.direction === 1) worksHeader.classList.add('scrolled');
+                else if (self.scroll() < 60) worksHeader.classList.remove('scrolled');
+            }
+        });
+
+        // ── Hero title animation ──
+        gsap.from('.works-hero-title .line span', {
+            yPercent: 110,
+            duration: 1.4,
+            stagger: 0.15,
+            ease: 'power4.out',
+            delay: 0.3
+        });
+
+        gsap.from('.hero-eyebrow, .hero-sub-row, .filter-bar', {
+            opacity: 0, y: 30,
+            duration: 1,
+            stagger: 0.15,
+            ease: 'power3.out',
+            delay: 0.6
+        });
+
+        // ── Cards reveal on scroll ──
+        document.querySelectorAll('.reveal-wc').forEach((el, i) => {
+            gsap.fromTo(el,
+                { opacity: 0, y: 60 },
+                {
+                    opacity: 1, y: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    delay: i % 3 * 0.1,
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 88%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+
+        // ── Filter Logic ──
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.wc[data-cat]');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                cards.forEach(card => {
+                    const match = filter === 'all' || card.dataset.cat === filter;
+                    if (match) {
+                        card.classList.remove('hidden');
+                        gsap.fromTo(card,
+                            { opacity: 0, scale: 0.96 },
+                            { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' }
+                        );
+                    } else {
+                        gsap.to(card, {
+                            opacity: 0, scale: 0.95, duration: 0.3, ease: 'power2.in',
+                            onComplete: () => card.classList.add('hidden')
+                        });
+                    }
+                });
+
+                // Update count
+                const visible = filter === 'all' ? cards.length : [...cards].filter(c => c.dataset.cat === filter).length;
+                const display = visible.toString().padStart(2, '0');
+                document.querySelector('.header-count').textContent = `${display} Projects`;
+                document.querySelector('.count-num').textContent = display;
+            });
+        });
+    </script>
+
+</body>
+</html>

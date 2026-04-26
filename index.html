@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA ARCHITECTS | The New Era of Design</title>
+    <meta name="description" content="Aura Architects — Creating sustainable and innovative structural solutions for a modern world. Based in the new era of design.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Background Evolution Canvas -->
+    <div id="bg-evolution">
+        <canvas id="evolution-canvas"></canvas>
+        <div class="bg-gradient-overlay"></div>
+    </div>
+
+    <!-- Preloader -->
+    <div id="loader">
+        <div class="loader-inner">
+            <h1 class="loader-logo">AURA</h1>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="progress-text">00</div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+            <nav class="mobile-nav">
+                <a href="#work" class="mobile-nav-link">Work</a>
+                <a href="#about" class="mobile-nav-link">Studio</a>
+                <a href="#services" class="mobile-nav-link">Services</a>
+                <a href="#process" class="mobile-nav-link">Process</a>
+                <a href="#testimonials" class="mobile-nav-link">Clients</a>
+            </nav>
+            <a href="#" class="mobile-cta-btn">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-inner flex-between">
+            <div class="header-left">
+                <a href="index.html" class="brand-logo">AURA ARCHITECTS</a>
+            </div>
+            <div class="header-right flex">
+                <nav class="desktop-nav">
+                    <ul class="flex">
+                        <li><a href="#work" class="nav-link">Work</a></li>
+                        <li><a href="#about" class="nav-link">Studio</a></li>
+                        <li><a href="#services" class="nav-link">Services</a></li>
+                        <li><a href="#process" class="nav-link">Process</a></li>
+                    </ul>
+                </nav>
+                <a href="#" class="header-cta-btn">Get in Touch</a>
+                <button class="menu-trigger" id="menuTrigger" aria-label="Open menu">
+                    <div class="menu-icon">
+                        <div class="m-line"></div>
+                        <div class="m-line"></div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- ═══════════════════════ HERO ═══════════════════════ -->
+        <section id="hero" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-top">
+                    <div class="hero-badge wet-glass">
+                        <span class="badge-dot"></span>
+                        <span>Est. 2010 · Award-Winning Studio</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <div class="line"><span>Designing the</span></div>
+                        <div class="line"><span>Silent Dialogue</span></div>
+                    </h1>
+                    <div class="hero-meta wet-glass">
+                        <p class="hero-desc">We craft spaces that transcend utility, blending structural integrity with artistic vision to redefine modern living.</p>
+                        <div class="hero-stats-mini">
+                            <div class="mini-stat">
+                                <span class="mini-num">14+</span>
+                                <span class="mini-label">Years</span>
+                            </div>
+                            <div class="mini-divider"></div>
+                            <div class="mini-stat">
+                                <span class="mini-num">120+</span>
+                                <span class="mini-label">Awards</span>
+                            </div>
+                            <div class="mini-divider"></div>
+                            <div class="mini-stat">
+                                <span class="mini-num">340+</span>
+                                <span class="mini-label">Projects</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-middle">
+                    <div class="hero-image-wrap">
+                        <img src="assets/images/hero.png" alt="Aura Architects Main Hero" class="parallax-img">
+                        <div class="hero-img-badge wet-glass">
+                            <i class="fa-solid fa-play"></i>
+                            <span>View Showreel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-bottom flex-between">
+                    <div class="hero-scroll-indicator">
+                        <div class="scroll-dot"></div>
+                        <span class="scroll-text">Scroll to explore</span>
+                    </div>
+                    <div class="hero-tags">
+                        <span class="hero-tag wet-glass">Architecture</span>
+                        <span class="hero-tag wet-glass">Interior</span>
+                        <span class="hero-tag wet-glass">Urban</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════ MARQUEE ═══════════════════════ -->
+        <div class="marquee-section">
+            <div class="marquee-track">
+                <div class="marquee-content">
+                    <span>Architectural Design</span><span class="marquee-dot">✦</span>
+                    <span>Interior Architecture</span><span class="marquee-dot">✦</span>
+                    <span>Urban Planning</span><span class="marquee-dot">✦</span>
+                    <span>Sustainable Design</span><span class="marquee-dot">✦</span>
+                    <span>3D Visualization</span><span class="marquee-dot">✦</span>
+                    <span>Project Management</span><span class="marquee-dot">✦</span>
+                    <span>Landscape Design</span><span class="marquee-dot">✦</span>
+                </div>
+                <div class="marquee-content" aria-hidden="true">
+                    <span>Architectural Design</span><span class="marquee-dot">✦</span>
+                    <span>Interior Architecture</span><span class="marquee-dot">✦</span>
+                    <span>Urban Planning</span><span class="marquee-dot">✦</span>
+                    <span>Sustainable Design</span><span class="marquee-dot">✦</span>
+                    <span>3D Visualization</span><span class="marquee-dot">✦</span>
+                    <span>Project Management</span><span class="marquee-dot">✦</span>
+                    <span>Landscape Design</span><span class="marquee-dot">✦</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════ STUDIO ═══════════════════════ -->
+        <section id="about" class="studio-section container">
+            <div class="studio-grid">
+                <div class="studio-content reveal-item">
+                    <span class="section-tag">Our Studio</span>
+                    <h2 class="section-title">We are AURA.<br>Architects of<br>the unseen.</h2>
+                    <p class="studio-p">Founded on the principle of minimalism and structural honesty, we believe every line tells a story.</p>
+                    <div class="studio-stats flex">
+                        <div class="stat-item wet-glass">
+                            <span class="stat-num">14+</span>
+                            <span class="stat-label">Years</span>
+                        </div>
+                        <div class="stat-item wet-glass">
+                            <span class="stat-num">120+</span>
+                            <span class="stat-label">Awards</span>
+                        </div>
+                        <div class="stat-item wet-glass">
+                            <span class="stat-num">340+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="studio-image-wrap reveal-item">
+                    <div class="studio-image">
+                        <img src="assets/images/vision.png" alt="Aura Studio Vision" class="parallax-img">
+                        <div class="studio-img-overlay wet-glass">
+                            <span class="overlay-tag">Award 2024</span>
+                            <p>Best Architectural Firm</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════ WORK ═══════════════════════ -->
+        <section id="work" class="work-section container">
+            <div class="work-header flex-between">
+                <div>
+                    <span class="section-tag">Portfolio</span>
+                    <h2 class="section-title">Selected Works</h2>
+                </div>
+                <a href="works.html" class="view-all-btn wet-glass">View All <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-item vertical reveal-item">
+                    <div class="item-img-wrap">
+                        <img src="assets/images/project1.png" alt="Horizon Villa" class="parallax-img">
+                    </div>
+                    <div class="item-meta wet-glass">
+                        <h3>Horizon Villa</h3>
+                        <p>Residential · 2024</p>
+                    </div>
+                </div>
+                <div class="bento-item wide reveal-item">
+                    <div class="item-img-wrap">
+                        <img src="assets/images/project4.png" alt="The Monolith Center" class="parallax-img">
+                    </div>
+                    <div class="item-meta wet-glass">
+                        <h3>The Monolith Center</h3>
+                        <p>Cultural · 2023</p>
+                    </div>
+                </div>
+                <div class="bento-item square reveal-item">
+                    <div class="item-img-wrap">
+                        <img src="assets/images/project2.png" alt="Glass Essence" class="parallax-img">
+                    </div>
+                    <div class="item-meta wet-glass">
+                        <h3>Glass Essence</h3>
+                        <p>Commercial · 2024</p>
+                    </div>
+                </div>
+                <div class="bento-item small reveal-item">
+                    <div class="item-img-wrap">
+                        <img src="assets/images/project3.png" alt="Urban Sanctuary" class="parallax-img">
+                    </div>
+                    <div class="item-meta wet-glass">
+                        <h3>Urban Sanctuary</h3>
+                        <p>Interior · 2023</p>
+                    </div>
+                </div>
+                <div class="bento-item full reveal-item">
+                    <div class="item-img-wrap">
+                        <img src="assets/images/project5.png" alt="The Museum Arc" class="parallax-img">
+                    </div>
+                    <div class="item-meta wet-glass">
+                        <h3>The Museum Arc</h3>
+                        <p>Cultural · 2024</p>
+                    </div>
+                </div>
+                <div class="bento-item square reveal-item">
+                    <div class="item-img-wrap">
+                        <img src="assets/images/service1.png" alt="Sakura Pavilion" class="parallax-img">
+                    </div>
+                    <div class="item-meta wet-glass">
+                        <h3>Sakura Pavilion</h3>
+                        <p>Landscape · 2023</p>
+                    </div>
+                </div>
+                <div class="bento-item square reveal-item">
+                    <div class="item-img-wrap">
+                        <img src="assets/images/vision.png" alt="Azure Tower" class="parallax-img">
+                    </div>
+                    <div class="item-meta wet-glass">
+                        <h3>Azure Tower</h3>
+                        <p>Commercial · 2022</p>
+                    </div>
+                </div>
+                <div class="bento-item full reveal-item">
+                    <div class="item-img-wrap">
+                        <img src="assets/images/service2.png" alt="The Zen House" class="parallax-img">
+                    </div>
+                    <div class="item-meta wet-glass">
+                        <h3>The Zen House</h3>
+                        <p>Residential · 2024</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════ SERVICES ═══════════════════════ -->
+        <section id="services" class="services-section container">
+            <div class="section-header-row flex-between">
+                <div>
+                    <span class="section-tag">What We Do</span>
+                    <h2 class="section-title">Our Services</h2>
+                </div>
+            </div>
+            <div class="services-grid">
+                <div class="service-image-sticky">
+                    <img src="assets/images/service1.png" alt="Services" class="active-service-img">
+                    <div class="service-img-tag wet-glass">
+                        <span>Premium Quality</span>
+                    </div>
+                </div>
+                <div class="service-list">
+                    <div class="service-item wet-glass active" data-img="assets/images/service1.png">
+                        <div class="service-item-inner">
+                            <span class="s-num">01</span>
+                            <div class="s-content">
+                                <h3 class="s-title">Architectural Design</h3>
+                                <p class="s-desc">Creating sustainable and innovative structural solutions for a modern world. From concept to completion.</p>
+                            </div>
+                            <i class="fa-solid fa-arrow-right s-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="service-item wet-glass" data-img="assets/images/service2.png">
+                        <div class="service-item-inner">
+                            <span class="s-num">02</span>
+                            <div class="s-content">
+                                <h3 class="s-title">Interior Architecture</h3>
+                                <p class="s-desc">Bespoke interiors that reflect the personality and lifestyle of our clients. Emotion in every space.</p>
+                            </div>
+                            <i class="fa-solid fa-arrow-right s-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="service-item wet-glass" data-img="assets/images/project2.png">
+                        <div class="service-item-inner">
+                            <span class="s-num">03</span>
+                            <div class="s-content">
+                                <h3 class="s-title">Urban Development</h3>
+                                <p class="s-desc">Large-scale master planning with a focus on community, sustainability and future growth.</p>
+                            </div>
+                            <i class="fa-solid fa-arrow-right s-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="service-item wet-glass" data-img="assets/images/project5.png">
+                        <div class="service-item-inner">
+                            <span class="s-num">04</span>
+                            <div class="s-content">
+                                <h3 class="s-title">Landscape Design</h3>
+                                <p class="s-desc">Harmonizing architecture with nature through thoughtful outdoor and landscape integration.</p>
+                            </div>
+                            <i class="fa-solid fa-arrow-right s-arrow"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════ PROCESS ═══════════════════════ -->
+        <section id="process" class="process-section container">
+            <div class="section-header centered">
+                <span class="section-tag">How We Work</span>
+                <h2 class="section-title">Our Process</h2>
+                <p class="section-desc">A streamlined journey from vision to reality, built on collaboration and precision.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-card wet-glass reveal-item">
+                    <div class="process-num">01</div>
+                    <div class="process-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3 class="process-title">Discovery</h3>
+                    <p class="process-desc">We dive deep into your vision, lifestyle, and goals to lay the creative foundation.</p>
+                </div>
+                <div class="process-card wet-glass reveal-item">
+                    <div class="process-num">02</div>
+                    <div class="process-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                    <h3 class="process-title">Concept</h3>
+                    <p class="process-desc">Initial designs and spatial concepts are crafted, refined, and presented for review.</p>
+                </div>
+                <div class="process-card wet-glass reveal-item">
+                    <div class="process-num">03</div>
+                    <div class="process-icon"><i class="fa-solid fa-drafting-compass"></i></div>
+                    <h3 class="process-title">Design</h3>
+                    <p class="process-desc">Every detail is engineered — material, structure, light, and proportion in perfect harmony.</p>
+                </div>
+                <div class="process-card wet-glass reveal-item">
+                    <div class="process-num">04</div>
+                    <div class="process-icon"><i class="fa-solid fa-building"></i></div>
+                    <h3 class="process-title">Delivery</h3>
+                    <p class="process-desc">Precision execution and oversight until the space exceeds every expectation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════ TESTIMONIALS ═══════════════════════ -->
+        <section id="testimonials" class="testimonials-full container">
+            <div class="section-header centered">
+                <span class="section-tag">Testimonials</span>
+                <h2 class="section-title">Client Voices</h2>
+            </div>
+            <div class="testimonial-lead-card wet-glass reveal-item">
+                <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                <h2 class="test-quote">"Aura Architects doesn't just build structures; they build legacies. Their attention to detail and vision is simply unmatched."</h2>
+                <div class="test-author flex">
+                    <img src="https://i.pravatar.cc/100?u=aura-founder" alt="Alexander Wright" class="founder-img">
+                    <div class="author-details">
+                        <span class="author-name">Alexander Wright</span>
+                        <span class="author-title">Principal Architect & Founder</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-grid-new">
+                <div class="test-card wet-glass reveal-item">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"The level of detail and artistic flair they bring to every corner of a project is what sets them apart."</p>
+                    <div class="author-mini flex">
+                        <img src="https://i.pravatar.cc/60?u=1" alt="Julian Marc">
+                        <div>
+                            <h4>Julian Marc</h4>
+                            <p>CEO, Luxe Estates</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-card wet-glass reveal-item">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"Working with Aura was a masterclass in collaboration. They listen, they innovate, and they deliver perfection."</p>
+                    <div class="author-mini flex">
+                        <img src="https://i.pravatar.cc/60?u=2" alt="Sophia Chen">
+                        <div>
+                            <h4>Sophia Chen</h4>
+                            <p>Design Director</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-card wet-glass reveal-item">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"A true partnership. They understand the balance between commercial viability and architectural integrity."</p>
+                    <div class="author-mini flex">
+                        <img src="https://i.pravatar.cc/60?u=3" alt="Marcus Vane">
+                        <div>
+                            <h4>Marcus Vane</h4>
+                            <p>Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════ CTA ═══════════════════════ -->
+        <section class="cta-section container">
+            <div class="cta-box wet-glass reveal-item">
+                <div class="cta-bg-blur"></div>
+                <span class="section-tag">Let's Build Together</span>
+                <h2 class="cta-text">Have a project<br>in mind?</h2>
+                <a href="#" class="cta-large-btn">Let's Talk <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-top flex-between">
+                <div class="footer-info">
+                    <h2 class="footer-logo">AURA</h2>
+                    <p>Defining the future of architecture since 2010.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn wet-glass" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn wet-glass" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-btn wet-glass" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-nav flex">
+                    <div class="footer-col">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#work">Work</a></li>
+                            <li><a href="#about">Studio</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#process">Process</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="#">hello@aura.studio</a></li>
+                            <li><a href="#">+1 (555) 000-0000</a></li>
+                            <li><a href="#">New York, USA</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom flex-between">
+                <p>&copy; 2026 Aura Architects. All rights reserved.</p>
+                <div class="watermark">
+                    Built by <span class="saif-labs">SaifLabs</span>
+                </div>
+                <p>Made with passion for design.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=2.0"></script>
+</body>
+
+</html>
